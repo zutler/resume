@@ -19,12 +19,12 @@ export const getSortedJobsData = async () => {
 };
 
 export async function getAllJobSlugs() {
-  const res = await fetch(`${HOST}/api/jobs`);
+  const res = await fetch(`${HOST}/api/slugs`);
   const data = await res.json();
 
-  return data.map((job: { id: number }) => {
+  return data.map((job: { id: string }) => {
     return {
-      params: { id: job?.id?.toString() },
+      params: { id: job.id },
     };
   });
 }

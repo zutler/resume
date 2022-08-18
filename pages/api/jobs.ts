@@ -7,7 +7,6 @@ type ResponseData =
       date: string;
       title: string;
       contentHtml: string;
-      params: { id: string };
     }[]
   | string;
 

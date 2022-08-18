@@ -1,47 +1,57 @@
 import { jobs } from '../data';
 
-const HOST = process.env.HOST;
-
 export const getSortedJobsData = async () => {
-  const res = await fetch(`${HOST}/api/jobs`);
-  const data = await res.json();
+  type ResponseData =
+    | {
+        id: number;
+        date: string;
+        title: string;
+        contentHtml: string;
+      }[]
+    | string;
 
   type DateType = {
     date: string;
   };
 
   // Sort posts by date
-  return data.sort((a: DateType, b: DateType) => {
+  const data = [...jobs].sort((a: DateType, b: DateType) => {
     if (a.date < b.date) {
       return 1;
     } else {
       return -1;
     }
   });
+
+  return data;
 };
 
 export async function getAllJobSlugs() {
-  // const res = await fetch(`${HOST}/api/slugs`);
-  // const data = await res.json();
-
   type ResponseData =
     | {
         id: string;
       }[]
     | string;
 
-  const data = [...jobs.map((job) => ({ id: job?.id?.toString() }))];
-
-  return data.map((job: { id: string }) => {
-    return {
-      params: { id: job.id },
-    };
-  });
+  const data = [...jobs].map((job) => ({
+    params: { id: job.id.toString() },
+  }));
+  return data;
 }
 
 export async function getJobData(id: string) {
-  const res = await fetch(`${HOST}/api/jobs/${id}`);
+  type ResponseData =
+    | {
+        id: number;
+        date: string;
+        title: string;
+        contentHtml: string;
+      }
+    | string;
 
-  const data = await res.json();
+  const data = [...jobs].find(
+    (job: { id: number }) => job.id.toString() === id
+  ) as ResponseData;
+
   return data;
 }

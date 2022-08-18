@@ -17,17 +17,21 @@ export default function Job({
 }) {
   return (
     <Layout>
-      <Head>
-        <title>{jobData.title}</title>
-      </Head>
+      <Head>{jobData?.title && <title>{jobData.title}</title>}</Head>
       <article>
-        <Heading as="h4" size={'md'}>
-          {jobData.title}
-        </Heading>
-        <div className={utilStyles.lightText}>
-          <Date dateString={jobData.date} />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: jobData.contentHtml }} />
+        {jobData?.title && (
+          <Heading as="h4" size={'md'}>
+            {jobData.title}
+          </Heading>
+        )}
+        {jobData?.date && (
+          <div className={utilStyles.lightText}>
+            <Date dateString={jobData.date} />
+          </div>
+        )}
+        {jobData?.contentHtml && (
+          <div dangerouslySetInnerHTML={{ __html: jobData.contentHtml }} />
+        )}
       </article>
     </Layout>
   );

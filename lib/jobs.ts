@@ -1,11 +1,8 @@
-import { jobs } from '../data';
-
 const HOST = process.env.HOST;
 
 export const getSortedJobsData = async () => {
-  // const res = await fetch(`${HOST}/api/jobs`);
-  // const data = await res.json();
-  const data = [...jobs];
+  const res = await fetch(`${HOST}/api/jobs`);
+  const data = await res.json();
 
   type DateType = {
     date: string;
@@ -22,9 +19,8 @@ export const getSortedJobsData = async () => {
 };
 
 export async function getAllJobSlugs() {
-  // const res = await fetch(`${HOST}/api/jobs`);
-  // const data = await res.json();
-  const data = [...jobs];
+  const res = await fetch(`${HOST}/api/jobs`);
+  const data = await res.json();
 
   return data.map((job: { id: number }) => {
     return {
@@ -34,18 +30,8 @@ export async function getAllJobSlugs() {
 }
 
 export async function getJobData(id: string) {
-  // const res = await fetch(`${HOST}/api/jobs/${id}`);
-  // const data = await res.json();
-  const data = [...jobs];
-  type ResponseData = {
-    id: number;
-    date: string;
-    title: string;
-    contentHtml: string;
-  };
-  const job = jobs.find(
-    (job: { id: number }) => job.id.toString() === id
-  ) as ResponseData;
+  const res = await fetch(`${HOST}/api/jobs/${id}`);
 
-  return job;
+  const data = await res.json();
+  return data;
 }

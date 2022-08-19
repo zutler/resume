@@ -27,3 +27,24 @@ export const user = {
   phone: '1-(646)-331-4725',
   website: 'http://www.linkedin.com/in/zutler',
 };
+
+export const skills = [
+  {
+    Languages: [
+      'JavaScript(ES5, ES6)',
+      'TypeScript',
+      'HTML(5)',
+      'CSS(3)',
+      'Sass',
+    ],
+  },
+  { Frameworks: ['React', 'Angular', 'ExtJS', 'jQuery'] },
+  {
+    Editors: ['VS Code', 'Sublime', 'Atom', 'WebStorm'],
+  },
+  { Bundlers: ['Webpack', 'Vite', 'Gulp', 'Grunt'] },
+  { CMS: ['GitHub', 'Bitbucket', 'SVN', 'CVS', 'TFS'] },
+  { Grids: ['AG-Grid', 'UI-Grid', 'Kendo-Grid'] },
+  { 'UI Frameworks': ['Material-UI', 'Bootstrap', 'Chakra-UI', 'Kendo-UI'] },
+  { Databases: ['MySQL', 'MongoDB'] },
+];

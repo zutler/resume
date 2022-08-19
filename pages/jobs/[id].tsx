@@ -5,22 +5,17 @@ import Date from '../../components/date';
 import Layout from '../../components/layout';
 import { getAllJobSlugs, getJobData } from '../../lib/jobs';
 import utilStyles from '../../styles/utils.module.css';
+import { JobType } from '../../types';
 
-export default function Job({
-  jobData,
-}: {
-  jobData: {
-    title: string;
-    date: string;
-    contentHtml: string;
-  };
-}) {
+type JobProp = { jobData: JobType };
+
+export default function Job({ jobData }: JobProp) {
   return (
     <Layout>
       <Head>{jobData?.title && <title>{jobData.title}</title>}</Head>
       <article>
         {jobData?.title && (
-          <Heading as="h4" size={'md'}>
+          <Heading as='h4' size={'md'}>
             {jobData.title}
           </Heading>
         )}

@@ -12,3 +12,22 @@ export type UserDataType = {
   phone: string;
   website: string;
 };
+
+export type JobType = {
+  id: number;
+  date: string;
+  title: string;
+  contentHtml: string;
+};
+
+export type SkillsType = {
+  languages: string[];
+  frameworks: string[];
+  databases: string[];
+  editors: string[];
+  bundlers: string[];
+  cms: string[];
+  grids: string[];
+  uiframeworks: string[];
+  tools: string[];
+}[];

@@ -1,12 +1,8 @@
 import { jobs } from '../data';
+import { JobType } from '../types';
 
 export const getSortedJobsData = () => {
-  type DataProp = {
-    id: number;
-    date: string;
-    title: string;
-    contentHtml: string;
-  }[];
+  type DataProp = JobType[];
 
   type DateType = {
     date: string;
@@ -26,10 +22,6 @@ export const getSortedJobsData = () => {
 
 export const getAllJobSlugs = () => {
   type DataProp = {
-    id: number;
-    date: string;
-    title: string;
-    contentHtml: string;
     params: { id: string };
   }[];
 
@@ -37,16 +29,13 @@ export const getAllJobSlugs = () => {
     params: { id: job.id.toString() },
   })) as DataProp;
 
+  console.log('data', data);
+
   return data;
 };
 
 export const getJobData = (id: string) => {
-  type DataProp = {
-    id: number;
-    date: string;
-    title: string;
-    contentHtml: string;
-  };
+  type DataProp = JobType;
 
   const data = [...jobs].find(
     (job: { id: number }) => job.id.toString() === id

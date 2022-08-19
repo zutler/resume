@@ -4,11 +4,13 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 import Date from '../components/date';
 import Layout, { siteDescription, siteTitle } from '../components/layout';
+import Skills from '../components/Skills';
 import UserData from '../components/UserData';
 import { getSortedJobsData } from '../lib/jobs';
 import { getUserData } from '../lib/user';
+import { getSkills } from '../lib/skills';
 import utilStyles from '../styles/utils.module.css';
-import { UserDataType } from '../types';
+import { SkillsType, UserDataType } from '../types';
 
 type AllJobsDataType = {
   date: string;
@@ -18,10 +20,11 @@ type AllJobsDataType = {
 
 type DataProps = {
   userData: UserDataType;
+  skills: SkillsType;
   allJobsData: AllJobsDataType;
 };
 
-const Home = ({ userData, allJobsData }: DataProps) => {
+const Home = ({ userData, skills, allJobsData }: DataProps) => {
   return (
     <Layout home>
       <Head>
@@ -30,7 +33,8 @@ const Home = ({ userData, allJobsData }: DataProps) => {
 
       <section>
         <UserData data={userData} />
-        <Text fontSize="lg" pb={4}>
+        <Skills data={skills} />
+        <Text fontSize='lg' pb={4}>
           {siteDescription}
         </Text>
       </section>
@@ -40,7 +44,7 @@ const Home = ({ userData, allJobsData }: DataProps) => {
           {allJobsData.map(({ id, date, title }) => (
             <ListItem key={id}>
               <NextLink href={`/jobs/${id}`} passHref>
-                <Link color="teal.500">{title}</Link>
+                <Link color='teal.500'>{title}</Link>
               </NextLink>
               <br />
               <small className={utilStyles.lightText}>
@@ -57,9 +61,11 @@ const Home = ({ userData, allJobsData }: DataProps) => {
 export const getStaticProps: GetStaticProps = () => {
   const userData = getUserData();
   const allJobsData = getSortedJobsData();
+  const skills = getSkills();
   return {
     props: {
       userData,
+      skills,
       allJobsData,
     },
   };

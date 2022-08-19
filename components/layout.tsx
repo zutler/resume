@@ -1,9 +1,8 @@
-import React, { ReactNode, useRef, useState } from 'react';
-import { Box, Flex, Heading, Spacer, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Link, Spacer } from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { Link } from '@chakra-ui/react';
+import React, { ReactNode, useRef, useState } from 'react';
 import utilStyles from '../styles/utils.module.css';
 import styles from './layout.module.css';
 import ThemeSwitcher from './ThemeSwitcher';

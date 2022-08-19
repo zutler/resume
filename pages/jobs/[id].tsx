@@ -37,8 +37,8 @@ export default function Job({
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getAllJobSlugs();
+export const getStaticPaths: GetStaticPaths = () => {
+  const paths = getAllJobSlugs();
 
   return {
     paths,
@@ -46,8 +46,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const jobData = await getJobData(params?.id as string);
+export const getStaticProps: GetStaticProps = ({ params }) => {
+  const jobData = getJobData(params?.id as string);
   return {
     props: {
       jobData,

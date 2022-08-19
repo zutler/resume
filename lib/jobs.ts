@@ -1,6 +1,6 @@
 import { jobs } from '../data';
 
-export const getSortedJobsData = async () => {
+export const getSortedJobsData = () => {
   type DataProp = {
     id: number;
     date: string;

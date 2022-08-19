@@ -38,32 +38,32 @@ const Layout = ({ children, home }: LayoutProps) => {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.png" />
-        <meta name="description" content={siteDescription} />
-        <meta name="og:title" content={siteTitle} />
+        <link rel='icon' href='/favicon.png' />
+        <meta name='description' content={siteDescription} />
+        <meta name='og:title' content={siteTitle} />
       </Head>
 
       <Box>
         <div ref={toolbarTopRef}>
           <Toolbar>
-            <Heading size="lg">{name}</Heading>
+            <Heading size='lg'>{name}</Heading>
             <Spacer />
             <ThemeSwitcher />
           </Toolbar>
         </div>
         <Flex
-          align="center"
-          direction="column"
-          flex="1"
+          align='center'
+          direction='column'
+          flex='1'
           height={`calc(100vh - ${toolbarTopHeight + toolbarBottomHeight}px)`}
-          overflowY="auto"
+          overflowY='auto'
         >
           <header>
             {home ? (
-              <Flex direction="column" align="center" mt={4}>
+              <Flex direction='column' align='center' mt={4}>
                 <Image
                   priority
-                  src="/images/binary.jpeg"
+                  src='/images/binary.jpeg'
                   className={utilStyles.borderCircle}
                   height={144}
                   width={144}
@@ -71,12 +71,12 @@ const Layout = ({ children, home }: LayoutProps) => {
                 />
               </Flex>
             ) : (
-              <Flex direction="column" align="center" mt={4}>
+              <Flex direction='column' align='center' mt={4}>
                 <NextLink href={'/'} passHref>
-                  <Link color="teal.500">
+                  <Link color='teal.500'>
                     <Image
                       priority
-                      src="/images/binary.jpeg"
+                      src='/images/binary.jpeg'
                       className={utilStyles.borderCircle}
                       height={108}
                       width={108}
@@ -87,19 +87,19 @@ const Layout = ({ children, home }: LayoutProps) => {
               </Flex>
             )}
           </header>
-          <Box m="2rem 5rem">
+          <Box m='2rem 5rem'>
             <main>{children}</main>
             {!home && (
               <div className={styles.backToHome}>
                 <NextLink href={'/'} passHref>
-                  <Link color="teal.500">← Back to home</Link>
+                  <Link color='teal.500'>← Back to home</Link>
                 </NextLink>
               </div>
             )}
           </Box>
         </Flex>
         <div ref={toolbarBottomRef}>
-          <Toolbar justify="center">
+          <Toolbar justify='center'>
             <footer>&copy; {new Date().getFullYear()}</footer>
           </Toolbar>
         </div>

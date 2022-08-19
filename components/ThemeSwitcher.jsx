@@ -7,9 +7,9 @@ function ThemeSwitcher() {
   return (
     <Box>
       <IconButton
-        aria-label="dark"
-        bg="transparent"
-        fontSize="lg"
+        aria-label='dark'
+        bg='transparent'
+        fontSize='lg'
         icon={colorMode === 'dark' ? <FaSun /> : <FaMoon />}
         onClick={toggleColorMode}
       />

@@ -1,5 +1,4 @@
 import { Box, IconButton, useColorMode } from '@chakra-ui/react';
-import { useEffect } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 function ThemeSwitcher() {

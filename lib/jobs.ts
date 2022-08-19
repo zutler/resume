@@ -1,14 +1,12 @@
 import { jobs } from '../data';
 
 export const getSortedJobsData = async () => {
-  type ResponseData =
-    | {
-        id: number;
-        date: string;
-        title: string;
-        contentHtml: string;
-      }[]
-    | string;
+  type DataProp = {
+    id: number;
+    date: string;
+    title: string;
+    contentHtml: string;
+  }[];
 
   type DateType = {
     date: string;
@@ -21,37 +19,38 @@ export const getSortedJobsData = async () => {
     } else {
       return -1;
     }
-  });
+  }) as DataProp;
 
   return data;
 };
 
-export async function getAllJobSlugs() {
-  type ResponseData =
-    | {
-        id: string;
-      }[]
-    | string;
+export const getAllJobSlugs = () => {
+  type DataProp = {
+    id: number;
+    date: string;
+    title: string;
+    contentHtml: string;
+    params: { id: string };
+  }[];
 
   const data = [...jobs].map((job) => ({
     params: { id: job.id.toString() },
-  }));
-  return data;
-}
+  })) as DataProp;
 
-export async function getJobData(id: string) {
-  type ResponseData =
-    | {
-        id: number;
-        date: string;
-        title: string;
-        contentHtml: string;
-      }
-    | string;
+  return data;
+};
+
+export const getJobData = (id: string) => {
+  type DataProp = {
+    id: number;
+    date: string;
+    title: string;
+    contentHtml: string;
+  };
 
   const data = [...jobs].find(
     (job: { id: number }) => job.id.toString() === id
-  ) as ResponseData;
+  ) as DataProp;
 
   return data;
-}
+};

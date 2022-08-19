@@ -6,28 +6,36 @@ import Date from '../components/date';
 import Layout, { siteDescription, siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedJobsData } from '../lib/jobs';
+import { getUserData } from '../lib/user';
+import UserData from '../components/UserData';
+import { UserDataType } from '../types';
+
+type AllJobsDataType = {
+  date: string;
+  title: string;
+  id: string;
+}[];
 
 type DataProps = {
-  allJobsData: {
-    date: string;
-    title: string;
-    id: string;
-  }[];
+  userData: UserDataType;
+  allJobsData: AllJobsDataType;
 };
 
-const Home = ({ allJobsData }: DataProps) => {
+const Home = ({ userData, allJobsData }: DataProps) => {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
       <section>
-        <Text fontSize="lg">{siteDescription}</Text>
+        <UserData data={userData} />
+        <Text fontSize="lg" pb={4}>
+          {siteDescription}
+        </Text>
       </section>
+
       <section>
-        <Heading as="h2" size="lg">
-          Resume
-        </Heading>
         <UnorderedList>
           {allJobsData.map(({ id, date, title }) => (
             <ListItem key={id}>
@@ -47,9 +55,11 @@ const Home = ({ allJobsData }: DataProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  const userData = await getUserData();
   const allJobsData = await getSortedJobsData();
   return {
     props: {
+      userData,
       allJobsData,
     },
   };

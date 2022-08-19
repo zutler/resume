@@ -1,5 +1,5 @@
 import React, { ReactNode, useRef, useState } from 'react';
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import { Box, Flex, Heading, Spacer, Text } from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import NextLink from 'next/link';
@@ -19,11 +19,13 @@ type LayoutProps = {
   home?: boolean;
 };
 
+const defaultHeight = 0;
+
 const Layout = ({ children, home }: LayoutProps) => {
   const toolbarTopRef = useRef<HTMLHeadingElement>(null);
   const toolbarBottomRef = useRef<HTMLHeadingElement>(null);
-  const [toolbarTopHeight, setToolbarTopHeight] = useState(0);
-  const [toolbarBottomHeight, setToolbarBottomHeight] = useState(0);
+  const [toolbarTopHeight, setToolbarTopHeight] = useState(defaultHeight);
+  const [toolbarBottomHeight, setToolbarBottomHeight] = useState(defaultHeight);
 
   React.useEffect(() => {
     if (toolbarTopRef.current) {
@@ -45,6 +47,8 @@ const Layout = ({ children, home }: LayoutProps) => {
       <Box>
         <div ref={toolbarTopRef}>
           <Toolbar>
+            <Heading size="lg">{name}</Heading>
+            <Spacer />
             <ThemeSwitcher />
           </Toolbar>
         </div>
@@ -66,9 +70,6 @@ const Layout = ({ children, home }: LayoutProps) => {
                   width={144}
                   alt={name}
                 />
-                <Heading as="h1" size={'lg'}>
-                  {name}
-                </Heading>
               </Flex>
             ) : (
               <Flex direction="column" align="center" mt={4}>
@@ -84,11 +85,6 @@ const Layout = ({ children, home }: LayoutProps) => {
                     />
                   </Link>
                 </NextLink>
-                <Heading as="h3" size={'md'}>
-                  <NextLink href={'/'} passHref>
-                    <Link color="teal.500">{name}</Link>
-                  </NextLink>
-                </Heading>
               </Flex>
             )}
           </header>

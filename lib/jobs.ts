@@ -29,8 +29,6 @@ export const getAllJobSlugs = () => {
     params: { id: job.id.toString() },
   })) as DataProp;
 
-  console.log('data', data);
-
   return data;
 };
 

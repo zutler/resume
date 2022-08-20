@@ -1,4 +1,13 @@
-import { Link, ListItem, Text, UnorderedList } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Collapse,
+  Link,
+  ListItem,
+  Text,
+  UnorderedList,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -7,8 +16,8 @@ import Layout, { siteDescription, siteTitle } from '../components/layout';
 import Skills from '../components/Skills';
 import UserData from '../components/UserData';
 import { getSortedJobsData } from '../lib/jobs';
-import { getUserData } from '../lib/user';
 import { getSkills } from '../lib/skills';
+import { getUserData } from '../lib/user';
 import utilStyles from '../styles/utils.module.css';
 import { SkillsType, UserDataType } from '../types';
 
@@ -25,6 +34,8 @@ type DataProps = {
 };
 
 const Home = ({ userData, skills, allJobsData }: DataProps) => {
+  const { isOpen: isOpenInfo, onToggle: onToggleInfo } = useDisclosure();
+  const { isOpen: isOpenSkills, onToggle: onToggleSkills } = useDisclosure();
   return (
     <Layout home>
       <Head>
@@ -32,8 +43,33 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
       </Head>
 
       <section>
-        <UserData data={userData} />
-        <Skills data={skills} />
+        <section>
+          <Button
+            colorScheme='teal'
+            w={150}
+            mb={4}
+            mr={4}
+            onClick={onToggleInfo}
+          >
+            {isOpenInfo ? '-' : '+'} My Contacts
+          </Button>
+          <Button colorScheme='teal' w={150} mb={4} onClick={onToggleSkills}>
+            {isOpenSkills ? '-' : '+'} My Skills
+          </Button>
+        </section>
+
+        <Collapse in={isOpenInfo} animateOpacity>
+          <Box p='4' pb='0' mb='4' border='1px solid teal' rounded='md'>
+            <UserData data={userData} />
+          </Box>
+        </Collapse>
+
+        <Collapse in={isOpenSkills} animateOpacity>
+          <Box p='4' pb='0' mb='4' border='1px solid teal' rounded='md'>
+            <Skills data={skills} />
+          </Box>
+        </Collapse>
+
         <Text fontSize='lg' pb={4}>
           {siteDescription}
         </Text>

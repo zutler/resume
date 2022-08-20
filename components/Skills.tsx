@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { SkillsType } from '../types';
 
 type PropsType = {
@@ -11,13 +11,10 @@ const Skills = ({ data }: PropsType) => {
       {data.map((category) =>
         Object.entries(category).map(([key, value]) => (
           <div key={key}>
-            <b>{`${key}: `}</b>
-            {value.map((skill, index) => (
-              <span key={skill}>
-                {skill}
-                {index === value.length - 1 ? '' : ', '}
-              </span>
-            ))}
+            <Text as='b'>{`${key}: `}</Text>
+            <Text as='span'>
+              {value.reduce((prev, curr) => `${prev}; ${curr}`)}
+            </Text>
           </div>
         ))
       )}

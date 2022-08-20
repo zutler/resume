@@ -8,10 +8,10 @@ type ToolbarProps = {
 };
 
 const Toolbar = (props: ToolbarProps) => {
-  const { children, backgroundColor = 'tomato', justify = 'right' } = props;
+  const { children, backgroundColor = 'teal', justify = 'right' } = props;
   return (
     <Box {...props} bg={backgroundColor}>
-      <Flex p={2} justify={justify} align="center">
+      <Flex p={2} justify={justify} align='center'>
         {children}
       </Flex>
     </Box>

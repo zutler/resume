@@ -38,7 +38,7 @@ export const skills = [
       'Sass',
     ],
   },
-  { Frameworks: ['React', 'Angular', 'ExtJS', 'jQuery'] },
+  { Frameworks: ['React', 'NextJs', 'Angular', 'ExtJS', 'jQuery'] },
   {
     Editors: ['VS Code', 'Sublime', 'Atom', 'WebStorm'],
   },

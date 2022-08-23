@@ -87,7 +87,7 @@ const Layout = ({ children, home }: LayoutProps) => {
               </Flex>
             )}
           </header>
-          <Box m='2rem 5rem'>
+          <Box m='8' width='80vw'>
             <main>{children}</main>
             {!home && (
               <div className={styles.backToHome}>

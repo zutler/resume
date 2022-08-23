@@ -1,31 +1,14 @@
-import {
-  Box,
-  Button,
-  Collapse,
-  Link,
-  ListItem,
-  Text,
-  UnorderedList,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Box, Button, Collapse, Text, useDisclosure } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import NextLink from 'next/link';
-import Date from '../components/date';
 import Layout, { siteDescription, siteTitle } from '../components/layout';
+import MyAccordion from '../components/MyAccordion';
 import Skills from '../components/Skills';
 import UserData from '../components/UserData';
 import { getSortedJobsData } from '../lib/jobs';
 import { getSkills } from '../lib/skills';
 import { getUserData } from '../lib/user';
-import utilStyles from '../styles/utils.module.css';
-import { SkillsType, UserDataType } from '../types';
-
-type AllJobsDataType = {
-  date: string;
-  title: string;
-  id: string;
-}[];
+import { AllJobsDataType, SkillsType, UserDataType } from '../types';
 
 type DataProps = {
   userData: UserDataType;
@@ -36,6 +19,7 @@ type DataProps = {
 const Home = ({ userData, skills, allJobsData }: DataProps) => {
   const { isOpen: isOpenInfo, onToggle: onToggleInfo } = useDisclosure();
   const { isOpen: isOpenSkills, onToggle: onToggleSkills } = useDisclosure();
+  const { isOpen: isOpenJobs, onToggle: onToggleJobs } = useDisclosure();
   return (
     <Layout home>
       <Head>
@@ -53,8 +37,17 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
           >
             {isOpenInfo ? '-' : '+'} My Contacts
           </Button>
-          <Button colorScheme='teal' w={150} mb={4} onClick={onToggleSkills}>
+          <Button
+            colorScheme='teal'
+            w={150}
+            mb={4}
+            mr={4}
+            onClick={onToggleSkills}
+          >
             {isOpenSkills ? '-' : '+'} My Skills
+          </Button>
+          <Button colorScheme='teal' w={150} mb={4} onClick={onToggleJobs}>
+            {isOpenJobs ? '-' : '+'} My Experience
           </Button>
         </section>
 
@@ -75,21 +68,11 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
         </Text>
       </section>
 
-      <section>
-        <UnorderedList>
-          {allJobsData.map(({ id, date, title }) => (
-            <ListItem key={id}>
-              <NextLink href={`/jobs/${id}`} passHref>
-                <Link color='teal.500'>{title}</Link>
-              </NextLink>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </ListItem>
-          ))}
-        </UnorderedList>
-      </section>
+      <Collapse in={isOpenJobs} animateOpacity>
+        <Box p='4' pb='4' mb='4' border='1px solid teal' rounded='md'>
+          <MyAccordion data={allJobsData} justify='space-between' />
+        </Box>
+      </Collapse>
     </Layout>
   );
 };

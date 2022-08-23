@@ -1,10 +1,9 @@
-import { Heading } from '@chakra-ui/react';
+import { Heading, Text } from '@chakra-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Date from '../../components/date';
 import Layout from '../../components/layout';
 import { getAllJobSlugs, getJobData } from '../../lib/jobs';
-import utilStyles from '../../styles/utils.module.css';
 import { JobType } from '../../types';
 
 type JobProp = { jobData: JobType };
@@ -14,15 +13,20 @@ export default function Job({ jobData }: JobProp) {
     <Layout>
       <Head>{jobData?.title && <title>{jobData.title}</title>}</Head>
       <article>
+        {jobData?.company && (
+          <Heading as='h3' size={'lg'}>
+            {jobData.company}
+          </Heading>
+        )}
         {jobData?.title && (
           <Heading as='h4' size={'md'}>
             {jobData.title}
           </Heading>
         )}
         {jobData?.date && (
-          <div className={utilStyles.lightText}>
+          <Text colorScheme='gray.200'>
             <Date dateString={jobData.date} />
-          </div>
+          </Text>
         )}
         {jobData?.contentHtml && (
           <div dangerouslySetInnerHTML={{ __html: jobData.contentHtml }} />

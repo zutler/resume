@@ -17,8 +17,16 @@ export type JobType = {
   id: number;
   date: string;
   title: string;
+  company: string;
   contentHtml: string;
 };
+
+export type AllJobsDataType = {
+  id: number;
+  date: string;
+  title: string;
+  company: string;
+}[];
 
 export type SkillsType = {
   languages: string[];

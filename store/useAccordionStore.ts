@@ -1,21 +1,22 @@
 import create from 'zustand';
 import { combine, devtools, persist } from 'zustand/middleware';
 
-const useStore = create(
+const useAccordionStore = create(
   devtools(
     persist(
-      combine({ color: 'white' }, (set) => ({
-        changeColor: () =>
+      combine({ current: 0 }, (set) => ({
+        setCurrent: (to: number) =>
           set((state) => ({
-            color: state.color === 'white' ? 'black' : 'white',
+            ...state,
+            current: to,
           })),
       })),
       {
-        name: 'color-storage', // unique name
+        name: 'accordion-storage', // unique name
         getStorage: () => localStorage,
       }
     )
   )
 );
 
-export default useStore;
+export default useAccordionStore;

@@ -1,4 +1,5 @@
-import { Box, Button, Collapse, Text, useDisclosure } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { Box, Button, Collapse, Text } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout, { siteDescription, siteTitle } from '../components/layout';
@@ -8,7 +9,8 @@ import UserData from '../components/UserData';
 import { getSortedJobsData } from '../lib/jobs';
 import { getSkills } from '../lib/skills';
 import { getUserData } from '../lib/user';
-import { AllJobsDataType, SkillsType, UserDataType } from '../types';
+import useSectionStore from '../store/useSectionStore';
+import { AllJobsDataType, Section, SkillsType, UserDataType } from '../types';
 
 type DataProps = {
   userData: UserDataType;
@@ -18,10 +20,26 @@ type DataProps = {
 
 const btnWidth = 170;
 
+const isSectionActive = (sections: Section[], key: string) =>
+  sections?.find((item) => item.id === key)?.isActive;
+
 const Home = ({ userData, skills, allJobsData }: DataProps) => {
-  const { isOpen: isOpenInfo, onToggle: onToggleInfo } = useDisclosure();
-  const { isOpen: isOpenSkills, onToggle: onToggleSkills } = useDisclosure();
-  const { isOpen: isOpenJobs, onToggle: onToggleJobs } = useDisclosure();
+  const { sections, toggleActiveState } = useSectionStore();
+
+  const [isOpenInfo, setOpenInfo] = useState(false);
+  const [isOpenSkills, setOpenSkills] = useState(false);
+  const [isOpenJobs, setOpenJobs] = useState(false);
+
+  useEffect(() => {
+    const isActiveJobsSection = isSectionActive(sections, 'jobs');
+    const isActiveSkillsSection = isSectionActive(sections, 'skills');
+    const isActiveInfoSection = isSectionActive(sections, 'info');
+
+    setOpenJobs(isActiveJobsSection as boolean);
+    setOpenSkills(isActiveSkillsSection as boolean);
+    setOpenInfo(isActiveInfoSection as boolean);
+  }, [sections]);
+
   return (
     <Layout home>
       <Head>
@@ -35,7 +53,7 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
             w={btnWidth}
             mb={4}
             mr={4}
-            onClick={onToggleInfo}
+            onClick={() => toggleActiveState('info')}
           >
             {isOpenInfo ? '-' : '+'} My Contacts
           </Button>
@@ -44,11 +62,16 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
             w={btnWidth}
             mb={4}
             mr={4}
-            onClick={onToggleSkills}
+            onClick={() => toggleActiveState('skills')}
           >
             {isOpenSkills ? '-' : '+'} My Skills
           </Button>
-          <Button colorScheme='teal' w={btnWidth} mb={4} onClick={onToggleJobs}>
+          <Button
+            colorScheme='teal'
+            w={btnWidth}
+            mb={4}
+            onClick={() => toggleActiveState('jobs')}
+          >
             {isOpenJobs ? '-' : '+'} My Experience
           </Button>
         </section>

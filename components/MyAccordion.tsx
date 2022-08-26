@@ -1,23 +1,19 @@
-import { ReactNode } from 'react';
-
 import {
   Accordion,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Box,
-  Link,
-  ListItem,
-  UnorderedList,
-  Text,
-  Spacer,
   Flex,
+  Link,
+  Spacer,
+  Text,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import Date from './date';
+import useAccordionStore from '../store/useAccordionStore';
 import { AllJobsDataType } from '../types';
+import Date from './date';
 
 type ComponentProps = {
   backgroundColor?: string;
@@ -28,9 +24,11 @@ type ComponentProps = {
 
 const MyAccordion = (props: ComponentProps) => {
   const { data, justify = 'left' } = props;
+  const { current, setCurrent } = useAccordionStore();
+
   return (
-    <Accordion allowToggle>
-      {data.map(({ id, date, title, company, location }) => (
+    <Accordion allowToggle defaultIndex={[current]}>
+      {data.map(({ id, date, title, company, location }, index) => (
         <AccordionItem key={id}>
           <h2>
             <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
@@ -74,7 +72,9 @@ const MyAccordion = (props: ComponentProps) => {
           </h2>
           <AccordionPanel pb={2}>
             <NextLink href={`/jobs/${id}`} passHref>
-              <Link color={'teal.500'}>Job Details</Link>
+              <Link color={'teal.500'} onClick={() => setCurrent(index)}>
+                Job Details
+              </Link>
             </NextLink>
           </AccordionPanel>
         </AccordionItem>

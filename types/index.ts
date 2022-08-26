@@ -40,3 +40,8 @@ export type SkillsType = {
   uiframeworks: string[];
   tools: string[];
 }[];
+
+export type Section = {
+  id: string;
+  isActive: boolean;
+};

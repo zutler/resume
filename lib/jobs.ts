@@ -5,12 +5,12 @@ export const getSortedJobsData = () => {
   type DataProp = JobType[];
 
   type DateType = {
-    date: string;
+    date: { from: string; to: string | null };
   };
 
   // Sort posts by date
   const data = [...jobs].sort((a: DateType, b: DateType) => {
-    if (a.date < b.date) {
+    if (a?.date?.from < b?.date?.from) {
       return 1;
     } else {
       return -1;

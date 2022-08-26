@@ -11,7 +11,7 @@ import Toolbar from './Toolbar';
 const name = 'Dmitriy Zutler';
 export const siteTitle = 'Portfolio of Dmitriy Zutler';
 export const siteDescription =
-  'I am a senior web developer with a passion to build web applications in a User-Friendly way!';
+  'I am experienced Web Developer with a passion to build User-Oriented, Highly Performant Web Applications.';
 
 type LayoutProps = {
   children: ReactNode;
@@ -92,7 +92,7 @@ const Layout = ({ children, home }: LayoutProps) => {
             {!home && (
               <div className={styles.backToHome}>
                 <NextLink href={'/'} passHref>
-                  <Link color='teal.500'>← Back to home</Link>
+                  <Link color='teal.500'>← Back to Home</Link>
                 </NextLink>
               </div>
             )}

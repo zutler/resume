@@ -16,6 +16,8 @@ type DataProps = {
   allJobsData: AllJobsDataType;
 };
 
+const btnWidth = 170;
+
 const Home = ({ userData, skills, allJobsData }: DataProps) => {
   const { isOpen: isOpenInfo, onToggle: onToggleInfo } = useDisclosure();
   const { isOpen: isOpenSkills, onToggle: onToggleSkills } = useDisclosure();
@@ -30,7 +32,7 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
         <section>
           <Button
             colorScheme='teal'
-            w={150}
+            w={btnWidth}
             mb={4}
             mr={4}
             onClick={onToggleInfo}
@@ -39,14 +41,14 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
           </Button>
           <Button
             colorScheme='teal'
-            w={150}
+            w={btnWidth}
             mb={4}
             mr={4}
             onClick={onToggleSkills}
           >
             {isOpenSkills ? '-' : '+'} My Skills
           </Button>
-          <Button colorScheme='teal' w={150} mb={4} onClick={onToggleJobs}>
+          <Button colorScheme='teal' w={btnWidth} mb={4} onClick={onToggleJobs}>
             {isOpenJobs ? '-' : '+'} My Experience
           </Button>
         </section>

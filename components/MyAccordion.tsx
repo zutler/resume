@@ -30,20 +30,44 @@ const MyAccordion = (props: ComponentProps) => {
   const { data, justify = 'left' } = props;
   return (
     <Accordion allowToggle>
-      {data.map(({ id, date, title, company }) => (
+      {data.map(({ id, date, title, company, location }) => (
         <AccordionItem key={id}>
           <h2>
             <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
-              <Flex justify={justify} w={'100%'}>
-                <Flex>
-                  <Text as='b' mr={4}>
-                    {company}
+              <Flex
+                direction={[
+                  'column',
+                  'column',
+                  'column',
+                  'column',
+                  'row',
+                  'row',
+                ]}
+                justify={[justify]}
+                align='top'
+                w='100%'
+              >
+                <Flex justify={'space-between'}>
+                  <Text as='b' textAlign='left' mr={4}>
+                    {company}:
                   </Text>
-                  <Text>{title}</Text>
+                  <Text textAlign={['right']} mr={4}>
+                    {title}
+                  </Text>
                 </Flex>
-                <Text size='small' mr={8}>
-                  <Date dateString={date} />
+                <Spacer flex={1} />
+                <Text textAlign={'left'} mr={4}>
+                  {location}
                 </Text>
+                <Flex minW={200}>
+                  <Text size='small' mr={1}>
+                    <Date dateString={date.from} />
+                  </Text>
+                  <span>-</span>
+                  <Text size='small' ml={1} mr={8}>
+                    <Date dateString={date.to} />
+                  </Text>
+                </Flex>
               </Flex>
               <AccordionIcon />
             </AccordionButton>

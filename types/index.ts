@@ -15,7 +15,7 @@ export type UserDataType = {
 
 export type JobType = {
   id: number;
-  date: string;
+  date: { from: string; to: string | null };
   title: string;
   company: string;
   contentHtml: string;
@@ -23,9 +23,10 @@ export type JobType = {
 
 export type AllJobsDataType = {
   id: number;
-  date: string;
+  date: { from: string; to: string };
   title: string;
   company: string;
+  location: string;
 }[];
 
 export type SkillsType = {

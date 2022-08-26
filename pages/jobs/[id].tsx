@@ -1,4 +1,4 @@
-import { Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Date from '../../components/date';
@@ -23,11 +23,17 @@ export default function Job({ jobData }: JobProp) {
             {jobData.title}
           </Heading>
         )}
-        {jobData?.date && (
-          <Text colorScheme='gray.200'>
-            <Date dateString={jobData.date} />
+        <Flex>
+          {jobData?.date?.from && (
+            <Text mr={1} colorScheme='gray.200'>
+              <Date dateString={jobData.date.from} />
+            </Text>
+          )}
+          <span>-</span>
+          <Text ml={1} colorScheme='gray.200'>
+            <Date dateString={jobData.date.to} />
           </Text>
-        )}
+        </Flex>
         {jobData?.contentHtml && (
           <div dangerouslySetInnerHTML={{ __html: jobData.contentHtml }} />
         )}

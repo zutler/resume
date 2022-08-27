@@ -118,6 +118,29 @@ export const jobs = [
   },
 ];
 
+export const education = [
+  {
+    id: 1,
+    date: { from: '2002-01-01', to: '2006-02-01' },
+    degree: 'BS',
+    college: 'CUNY, Brooklyn College',
+    major: 'Computer Science and Information Technologies',
+    minor: 'Multimedia Computing',
+    gpa: 3.55,
+    location: 'Brooklyn, NY',
+  },
+  {
+    id: 2,
+    date: { from: '1995-09-01', to: '2000-06-01' },
+    degree: 'BE',
+    college: 'Rostov State University of Transport Communications',
+    major: 'Mechanical Engineering',
+    minor: null,
+    gpa: 3.75,
+    location: 'Rostov-on-Don, RUS',
+  },
+];
+
 export const user = {
   id: 1,
   name: 'Dmitriy Zutler',

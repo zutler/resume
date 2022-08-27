@@ -4,6 +4,7 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  ExpandedIndex,
   Flex,
   Link,
   Spacer,
@@ -22,13 +23,21 @@ type ComponentProps = {
   justify?: 'left' | 'right' | 'center' | 'space-between';
 };
 
-const MyAccordion = (props: ComponentProps) => {
+const JobsAccordion = (props: ComponentProps) => {
   const { data, justify = 'left' } = props;
   const { current, setCurrent } = useAccordionStore();
 
+  const setDefaultIndex = (expandedIndex: ExpandedIndex) => {
+    setCurrent(expandedIndex as number);
+  };
+
   return (
-    <Accordion allowToggle defaultIndex={[current]}>
-      {data.map(({ id, date, title, company, location }, index) => (
+    <Accordion
+      allowToggle
+      defaultIndex={current as ExpandedIndex}
+      onChange={setDefaultIndex}
+    >
+      {data.map(({ id, date, title, company, location }) => (
         <AccordionItem key={id}>
           <h2>
             <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
@@ -72,9 +81,7 @@ const MyAccordion = (props: ComponentProps) => {
           </h2>
           <AccordionPanel pb={2}>
             <NextLink href={`/jobs/${id}`} passHref>
-              <Link color={'teal.500'} onClick={() => setCurrent(index)}>
-                Job Details
-              </Link>
+              <Link color={'teal.500'}>Job Details</Link>
             </NextLink>
           </AccordionPanel>
         </AccordionItem>
@@ -83,4 +90,4 @@ const MyAccordion = (props: ComponentProps) => {
   );
 };
 
-export default MyAccordion;
+export default JobsAccordion;

@@ -21,6 +21,17 @@ export type JobType = {
   contentHtml: string;
 };
 
+export type EducationDataType = {
+  id: number;
+  date: { from: string; to: string };
+  degree: string;
+  college: string;
+  major: string;
+  minor: string | null;
+  gpa: number;
+  location: string;
+}[];
+
 export type AllJobsDataType = {
   id: number;
   date: { from: string; to: string };

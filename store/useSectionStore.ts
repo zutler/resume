@@ -11,6 +11,7 @@ const useSectionStore = create(
             { id: 'info', isActive: false },
             { id: 'skills', isActive: false },
             { id: 'jobs', isActive: false },
+            { id: 'education', isActive: false },
           ],
         },
         set => ({

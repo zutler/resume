@@ -21,7 +21,7 @@ type DataProps = {
 const btnWidth = 170;
 
 const isSectionActive = (sections: Section[], key: string) =>
-  sections?.find((item) => item.id === key)?.isActive;
+  sections?.find(item => item.id === key)?.isActive;
 
 const Home = ({ userData, skills, allJobsData }: DataProps) => {
   const { sections, toggleActiveState } = useSectionStore();
@@ -47,6 +47,9 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
       </Head>
 
       <section>
+        <Text fontSize='lg' pb={4}>
+          {siteDescription}
+        </Text>
         <section>
           <Button
             colorScheme='teal'
@@ -88,16 +91,12 @@ const Home = ({ userData, skills, allJobsData }: DataProps) => {
           </Box>
         </Collapse>
 
-        <Text fontSize='lg' pb={4}>
-          {siteDescription}
-        </Text>
+        <Collapse in={isOpenJobs} animateOpacity>
+          <Box p='4' pb='4' mb='4' border='1px solid teal' rounded='md'>
+            <MyAccordion data={allJobsData} justify='space-between' />
+          </Box>
+        </Collapse>
       </section>
-
-      <Collapse in={isOpenJobs} animateOpacity>
-        <Box p='4' pb='4' mb='4' border='1px solid teal' rounded='md'>
-          <MyAccordion data={allJobsData} justify='space-between' />
-        </Box>
-      </Collapse>
     </Layout>
   );
 };

@@ -11,7 +11,7 @@ import Toolbar from './Toolbar';
 const name = 'Dmitriy Zutler';
 export const siteTitle = 'Portfolio of Dmitriy Zutler';
 export const siteDescription =
-  'I am experienced Web Developer with a passion to build User-Oriented, Highly Performant Web Applications.';
+  'I am an experienced Web Developer with a passion to build User-Oriented, Highly Performant Web Applications.';
 
 type LayoutProps = {
   children: ReactNode;

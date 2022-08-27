@@ -13,14 +13,14 @@ const useSectionStore = create(
             { id: 'jobs', isActive: false },
           ],
         },
-        (set) => ({
+        set => ({
           toggleActiveState: (id: string) =>
-            set((state) => ({
+            set(state => ({
               ...state,
-              sections: state.sections.map((section) =>
+              sections: state.sections.map(section =>
                 section.id === id
                   ? ({ ...section, isActive: !section.isActive } as Section)
-                  : section
+                  : (section as Section)
               ),
             })),
         })

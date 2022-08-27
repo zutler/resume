@@ -74,9 +74,11 @@ const EducationAccordion = (props: ComponentProps) => {
               <Text textAlign='left' mr={4}>
                 <b>Major:</b> {major}
               </Text>
-              <Text textAlign='left' mr={4}>
-                <b>Minor:</b> {minor}
-              </Text>
+              {minor && (
+                <Text textAlign='left' mr={4}>
+                  <b>Minor:</b> {minor}
+                </Text>
+              )}
             </AccordionPanel>
           </AccordionItem>
         )

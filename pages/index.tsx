@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, Collapse, Text } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Collapse, Text } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Layout, { siteDescription, siteTitle } from '../components/layout';
+import EducationAccordion from '../components/EducationAccordion';
 import JobsAccordion from '../components/JobsAccordion';
+import Layout, { siteDescription, siteTitle } from '../components/layout';
 import Skills from '../components/Skills';
 import UserData from '../components/UserData';
 import { getSortedEducationData } from '../lib/education';
@@ -18,7 +19,6 @@ import {
   SkillsType,
   UserDataType,
 } from '../types';
-import EducationAccordion from '../components/EducationAccordion';
 
 type DataProps = {
   userData: UserDataType;
@@ -26,8 +26,6 @@ type DataProps = {
   allJobsData: AllJobsDataType;
   educationData: EducationDataType;
 };
-
-const btnWidth = 170;
 
 const isSectionActive = (sections: Section[], key: string) =>
   sections?.find(item => item.id === key)?.isActive;
@@ -59,47 +57,31 @@ const Home = ({ userData, skills, allJobsData, educationData }: DataProps) => {
       </Head>
 
       <section>
-        <Text fontSize='lg' pb={4}>
+        <Text fontSize='xl' mb={2}>
           {siteDescription}
         </Text>
         <section>
-          <Button
+          <ButtonGroup
+            variant='link'
             colorScheme='teal'
-            w={btnWidth}
             mb={4}
-            mr={4}
-            onClick={() => toggleActiveState('info')}
+            gap='4'
+            width='100%'
           >
-            {isOpenInfo ? '-' : '+'} My Contacts
-          </Button>
-          <Button
-            colorScheme='teal'
-            w={btnWidth}
-            mb={4}
-            mr={4}
-            onClick={() => toggleActiveState('skills')}
-          >
-            {isOpenSkills ? '-' : '+'} My Skills
-          </Button>
-          <Button
-            colorScheme='teal'
-            w={btnWidth}
-            mb={4}
-            mr={4}
-            onClick={() => toggleActiveState('jobs')}
-          >
-            {isOpenJobs ? '-' : '+'} My Experience
-          </Button>
+            <Button onClick={() => toggleActiveState('info')}>
+              {isOpenInfo ? '-' : '+'} My Contacts
+            </Button>
+            <Button onClick={() => toggleActiveState('skills')}>
+              {isOpenSkills ? '-' : '+'} My Skills
+            </Button>
+            <Button onClick={() => toggleActiveState('jobs')}>
+              {isOpenJobs ? '-' : '+'} My Experience
+            </Button>
 
-          <Button
-            colorScheme='teal'
-            w={btnWidth}
-            mb={4}
-            mr={4}
-            onClick={() => toggleActiveState('education')}
-          >
-            {isOpenEducation ? '-' : '+'} My Education
-          </Button>
+            <Button onClick={() => toggleActiveState('education')}>
+              {isOpenEducation ? '-' : '+'} My Education
+            </Button>
+          </ButtonGroup>
         </section>
 
         <Collapse in={isOpenInfo} animateOpacity>

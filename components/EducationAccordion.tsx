@@ -30,29 +30,15 @@ const EducationAccordion = (props: ComponentProps) => {
             <h2>
               <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
                 <Flex
-                  direction={[
-                    'column',
-                    'column',
-                    'column',
-                    'column',
-                    'row',
-                    'row',
-                  ]}
+                  direction={['column', 'column', 'row', 'row']}
                   justify={[justify]}
                   align='top'
                   w='100%'
                 >
-                  <Flex wrap={'wrap'}>
-                    <Text textAlign='left' mr={1}>
-                      {`${degree}:`}
-                    </Text>
-                    <Text as='b' textAlign='left' mr={4}>
-                      {`${college}`}
-                    </Text>
-                    <Text textAlign={['left']} mr={4}>
-                      {`GPA: ${gpa}`}
-                    </Text>
-                  </Flex>
+                  <Text as='b' textAlign='left' mr={4}>
+                    {`${college}`}
+                  </Text>
+
                   <Spacer flex={1} />
                   <Text textAlign={'left'} mr={4}>
                     {location}
@@ -71,6 +57,12 @@ const EducationAccordion = (props: ComponentProps) => {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={2}>
+              <Text textAlign='left' mr={4}>
+                <b>Degree:</b> {degree}
+              </Text>
+              <Text textAlign={['left']} mr={4}>
+                <b>GPA:</b> {gpa}
+              </Text>
               <Text textAlign='left' mr={4}>
                 <b>Major:</b> {major}
               </Text>

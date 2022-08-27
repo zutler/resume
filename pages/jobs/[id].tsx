@@ -14,16 +14,16 @@ export default function Job({ jobData }: JobProp) {
       <Head>{jobData?.title && <title>{jobData.title}</title>}</Head>
       <article>
         {jobData?.company && (
-          <Heading as='h3' size={'lg'}>
+          <Heading as='h3' size={'lg'} mb={1}>
             {jobData.company}
           </Heading>
         )}
         {jobData?.title && (
-          <Heading as='h4' size={'md'}>
+          <Heading as='h4' size={'md'} mb={1}>
             {jobData.title}
           </Heading>
         )}
-        <Flex>
+        <Flex fontSize='xl' mb={4}>
           {jobData?.date?.from && (
             <Text mr={1} colorScheme='gray.200'>
               <Date dateString={jobData.date.from} />
@@ -37,7 +37,10 @@ export default function Job({ jobData }: JobProp) {
           )}
         </Flex>
         {jobData?.contentHtml && (
-          <div dangerouslySetInnerHTML={{ __html: jobData.contentHtml }} />
+          <Text
+            fontSize='xl'
+            dangerouslySetInnerHTML={{ __html: jobData.contentHtml }}
+          ></Text>
         )}
       </article>
     </Layout>

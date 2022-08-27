@@ -59,8 +59,8 @@ const Layout = ({ children, home }: LayoutProps) => {
           overflowY='auto'
         >
           <header>
-            {home ? (
-              <Flex direction='column' align='center' mt={4}>
+            <Box mt={4}>
+              {home ? (
                 <Image
                   priority
                   src='/images/binary.jpeg'
@@ -69,9 +69,7 @@ const Layout = ({ children, home }: LayoutProps) => {
                   width={144}
                   alt={name}
                 />
-              </Flex>
-            ) : (
-              <Flex direction='column' align='center' mt={4}>
+              ) : (
                 <NextLink href={'/'} passHref>
                   <Link color='teal.500'>
                     <Image
@@ -84,8 +82,8 @@ const Layout = ({ children, home }: LayoutProps) => {
                     />
                   </Link>
                 </NextLink>
-              </Flex>
-            )}
+              )}
+            </Box>
           </header>
           <Box m='8' width='80vw'>
             <main>{children}</main>

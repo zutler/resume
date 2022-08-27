@@ -30,9 +30,11 @@ export default function Job({ jobData }: JobProp) {
             </Text>
           )}
           <span>-</span>
-          <Text ml={1} colorScheme='gray.200'>
-            <Date dateString={jobData.date.to} />
-          </Text>
+          {jobData?.date && (
+            <Text ml={1} colorScheme='gray.200'>
+              <Date dateString={jobData.date.to} />
+            </Text>
+          )}
         </Flex>
         {jobData?.contentHtml && (
           <div dangerouslySetInnerHTML={{ __html: jobData.contentHtml }} />

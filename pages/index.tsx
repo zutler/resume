@@ -67,18 +67,35 @@ const Home = ({ userData, skills, allJobsData, educationData }: DataProps) => {
             mb={4}
             gap='4'
             width='100%'
+            flexDirection={['column', 'row', 'row', 'row']}
           >
-            <Button onClick={() => toggleActiveState('info')}>
+            <Button
+              justifyContent='left'
+              onClick={() => toggleActiveState('info')}
+              mx='0 !important'
+            >
               {isOpenInfo ? '-' : '+'} My Contacts
             </Button>
-            <Button onClick={() => toggleActiveState('skills')}>
+            <Button
+              justifyContent='left'
+              onClick={() => toggleActiveState('skills')}
+              mx='0 !important'
+            >
               {isOpenSkills ? '-' : '+'} My Skills
             </Button>
-            <Button onClick={() => toggleActiveState('jobs')}>
+            <Button
+              justifyContent='left'
+              onClick={() => toggleActiveState('jobs')}
+              mx='0 !important'
+            >
               {isOpenJobs ? '-' : '+'} My Experience
             </Button>
 
-            <Button onClick={() => toggleActiveState('education')}>
+            <Button
+              justifyContent='left'
+              mx='0 !important'
+              onClick={() => toggleActiveState('education')}
+            >
               {isOpenEducation ? '-' : '+'} My Education
             </Button>
           </ButtonGroup>

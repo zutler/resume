@@ -85,7 +85,7 @@ const Layout = ({ children, home }: LayoutProps) => {
               )}
             </Box>
           </header>
-          <Box m='8' width={['90vw', '90vw', '80vw', '80vw']}>
+          <Box m={4} p={4} width={['90vw', '90vw', '80vw', '80vw']}>
             <main>{children}</main>
             {!home && (
               <div className={styles.backToHome}>

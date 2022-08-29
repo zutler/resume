@@ -43,7 +43,7 @@ const Layout = ({ children, home }: LayoutProps) => {
         <meta name='og:title' content={siteTitle} />
       </Head>
 
-      <Box>
+      <Box fontSize='xl'>
         <div ref={toolbarTopRef}>
           <Toolbar>
             <Heading size='lg'>{name}</Heading>
@@ -85,7 +85,7 @@ const Layout = ({ children, home }: LayoutProps) => {
               )}
             </Box>
           </header>
-          <Box m='8' width='80vw'>
+          <Box m='8' width={['90vw', '90vw', '80vw', '80vw']}>
             <main>{children}</main>
             {!home && (
               <div className={styles.backToHome}>

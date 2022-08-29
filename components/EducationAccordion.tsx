@@ -27,36 +27,36 @@ const EducationAccordion = (props: ComponentProps) => {
       {data.map(
         ({ id, date, degree, college, major, minor, gpa, location }) => (
           <AccordionItem key={id}>
-            <h2>
-              <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
-                <Flex
-                  direction={['column', 'column', 'row', 'row']}
-                  justify={[justify]}
-                  align='top'
-                  w='100%'
-                >
-                  <Text as='b' textAlign='left' mr={4}>
-                    {`${college}`}
-                  </Text>
+            <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
+              <Flex
+                direction={['column', 'column', 'row', 'row']}
+                justify={[justify]}
+                align='top'
+                w='100%'
+                fontSize='xl'
+              >
+                <Text as='b' textAlign='left' mr={4}>
+                  {`${college}`}
+                </Text>
 
-                  <Spacer flex={1} />
-                  <Text textAlign={'left'} mr={4}>
-                    {location}
+                <Spacer flex={1} />
+                <Text textAlign={'left'} mr={4}>
+                  {location}
+                </Text>
+                <Flex minW={200}>
+                  <Text size='small' mr={1}>
+                    <Date dateString={date.from} />
                   </Text>
-                  <Flex minW={200}>
-                    <Text size='small' mr={1}>
-                      <Date dateString={date.from} />
-                    </Text>
-                    <span>-</span>
-                    <Text size='small' ml={1} mr={8}>
-                      <Date dateString={date.to} />
-                    </Text>
-                  </Flex>
+                  <span>-</span>
+                  <Text size='small' ml={1} mr={8}>
+                    <Date dateString={date.to} />
+                  </Text>
                 </Flex>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={2}>
+              </Flex>
+              <AccordionIcon />
+            </AccordionButton>
+
+            <AccordionPanel my={2} pb={2}>
               <Text textAlign='left' mr={4}>
                 <b>Degree:</b> {degree}
               </Text>

@@ -57,17 +57,16 @@ const Home = ({ userData, skills, allJobsData, educationData }: DataProps) => {
       </Head>
 
       <section>
-        <Text fontSize='xl' mb={2}>
-          {siteDescription}
-        </Text>
+        <Text mb={2}>{siteDescription}</Text>
         <section>
           <ButtonGroup
             variant='link'
             colorScheme='teal'
+            size='xl'
             mb={4}
             gap='4'
             width='100%'
-            flexDirection={['column', 'row', 'row', 'row']}
+            flexDirection={['column', 'column', 'row', 'row']}
           >
             <Button
               justifyContent='left'

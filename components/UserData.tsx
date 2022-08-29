@@ -9,27 +9,17 @@ const UserData = ({ data }: PropsType) => {
   return (
     <Flex wrap='wrap' whiteSpace='nowrap' alignItems='top'>
       <Box flex={1} pb={4} mr={4}>
-        {data?.address?.street && (
-          <Text fontSize='lg'>{data.address.street}</Text>
-        )}
-        {data?.address?.suite && (
-          <Text fontSize='lg'>{data.address.suite}</Text>
-        )}
+        {data?.address?.street && <Text>{data.address.street}</Text>}
+        {data?.address?.suite && <Text>{data.address.suite}</Text>}
 
         <Flex>
           {data?.address?.city && (
-            <Text fontSize='lg' paddingRight={'.5rem'}>
-              {`${data.address.city},`}
-            </Text>
+            <Text paddingRight={'.5rem'}>{`${data.address.city},`}</Text>
           )}
           {data?.address?.state && (
-            <Text fontSize='lg' paddingRight={'.5rem'}>
-              {data.address.state}
-            </Text>
+            <Text paddingRight={'.5rem'}>{data.address.state}</Text>
           )}
-          {data?.address?.zipcode && (
-            <Text fontSize='lg'>{data.address.zipcode}</Text>
-          )}
+          {data?.address?.zipcode && <Text>{data.address.zipcode}</Text>}
         </Flex>
       </Box>
       <Box
@@ -37,9 +27,9 @@ const UserData = ({ data }: PropsType) => {
         textAlign={['left', 'left', 'right', 'right', 'right']}
         pb={4}
       >
-        {data?.phone && <Text fontSize='lg'>{data.phone}</Text>}
+        {data?.phone && <Text>{data.phone}</Text>}
         {data?.email && (
-          <Text fontSize='lg'>
+          <Text>
             <Link
               color='teal.500'
               href={`mailto:${data.email}?subject=Mail from ${data.name} Resume Website&body=Hi ${data.name},%0D%0A%0D%0AYour resume looks Fantastic.%0D%0AI would like to hire you immediately!!!%0D%0A%0D%0ASincerely,%0D%0A<your name>`}
@@ -50,7 +40,7 @@ const UserData = ({ data }: PropsType) => {
           </Text>
         )}
         {data?.website && (
-          <Text fontSize='lg'>
+          <Text>
             <Link color='teal.500' href={data.website} isExternal>
               {data.website}
             </Link>

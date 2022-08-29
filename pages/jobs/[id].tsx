@@ -23,7 +23,7 @@ export default function Job({ jobData }: JobProp) {
             {jobData.title}
           </Heading>
         )}
-        <Flex fontSize='xl' mb={4}>
+        <Flex mb={4}>
           {jobData?.date?.from && (
             <Text mr={1} colorScheme='gray.200'>
               <Date dateString={jobData.date.from} />
@@ -38,7 +38,6 @@ export default function Job({ jobData }: JobProp) {
         </Flex>
         {jobData?.contentHtml && (
           <Text
-            fontSize='xl'
             dangerouslySetInnerHTML={{ __html: jobData.contentHtml }}
           ></Text>
         )}

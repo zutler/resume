@@ -1,12 +1,12 @@
 describe('index page', () => {
   it('renders My Contacts button', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.contains('+ My Contacts');
   });
 
   it('shows the My Contacts section on Click', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.contains('+ My Contacts').click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
@@ -23,7 +23,7 @@ describe('index page', () => {
   });
 
   it('hides the My Contacts section on Click', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.contains('+ My Contacts').click();
     cy.contains('- My Contacts').click();
@@ -41,19 +41,19 @@ describe('index page', () => {
   });
 
   it('renders My Skills button', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.contains('+ My Skills');
   });
 
   it('renders My Experience button', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.contains('+ My Experience');
   });
 
   it('renders My Education button', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
 
     cy.contains('+ My Education');
   });

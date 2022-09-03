@@ -119,7 +119,14 @@ const Home = ({ userData, skills, allJobsData, educationData }: DataProps) => {
         </Collapse>
 
         <Collapse in={isOpenEducation} animateOpacity>
-          <Box p='4' pb='4' mb='4' border='1px solid teal' rounded='md'>
+          <Box
+            p='4'
+            pb='4'
+            mb='4'
+            border='1px solid teal'
+            rounded='md'
+            data-cy='education-accordion'
+          >
             <EducationAccordion data={educationData} justify='space-between' />
           </Box>
         </Collapse>

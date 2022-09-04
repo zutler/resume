@@ -26,7 +26,7 @@ const EducationAccordion = (props: ComponentProps) => {
     <Accordion allowToggle>
       {data.map(
         ({ id, date, degree, college, major, minor, gpa, location }) => (
-          <AccordionItem key={id}>
+          <AccordionItem key={id} data-cy={`accordion-item-${id}`}>
             <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
               <Flex
                 direction={['column', 'column', 'row', 'row']}

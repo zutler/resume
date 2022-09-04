@@ -101,19 +101,40 @@ const Home = ({ userData, skills, allJobsData, educationData }: DataProps) => {
         </section>
 
         <Collapse in={isOpenInfo} animateOpacity>
-          <Box p='4' pb='0' mb='4' border='1px solid teal' rounded='md'>
+          <Box
+            p='4'
+            pb='0'
+            mb='4'
+            border='1px solid teal'
+            rounded='md'
+            data-cy='user-accordion'
+          >
             <UserData data={userData} />
           </Box>
         </Collapse>
 
         <Collapse in={isOpenSkills} animateOpacity>
-          <Box p='4' pb='0' mb='4' border='1px solid teal' rounded='md'>
+          <Box
+            p='4'
+            pb='0'
+            mb='4'
+            border='1px solid teal'
+            rounded='md'
+            data-cy='skills-accordion'
+          >
             <Skills data={skills} />
           </Box>
         </Collapse>
 
         <Collapse in={isOpenJobs} animateOpacity>
-          <Box p='4' pb='4' mb='4' border='1px solid teal' rounded='md'>
+          <Box
+            p='4'
+            pb='4'
+            mb='4'
+            border='1px solid teal'
+            rounded='md'
+            data-cy='jobs-accordion'
+          >
             <JobsAccordion data={allJobsData} justify='space-between' />
           </Box>
         </Collapse>

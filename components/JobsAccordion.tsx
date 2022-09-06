@@ -38,7 +38,7 @@ const JobsAccordion = (props: ComponentProps) => {
       onChange={setDefaultIndex}
     >
       {data.map(({ id, date, title, company, location }) => (
-        <AccordionItem key={id}>
+        <AccordionItem key={id} data-cy={`accordion-item-${id}`}>
           <AccordionButton _expanded={{ bg: 'teal.500', color: 'white' }}>
             <Flex
               direction={['column', 'column', 'column', 'column', 'row', 'row']}

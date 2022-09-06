@@ -121,12 +121,100 @@ describe('index page', () => {
     cy.contains('+ My Experience');
   });
 
+  it('shows the My Experience section on Click', () => {
+    cy.visit('/');
+
+    cy.contains('+ My Experience').click();
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
+    cy.contains('- My Experience');
+
+    cy.get('[data-cy="jobs-accordion"]').within(() => {
+      cy.contains('Bank of America, Merrill Lynch').should('be.visible');
+      cy.contains('VP Software Developer (UI)').should('be.visible');
+      cy.contains('NYC, NY').should('be.visible');
+      cy.contains('07/2017').should('be.visible');
+      cy.contains('Present').should('be.visible');
+
+      cy.contains('Sailthru').should('be.visible');
+      cy.contains('Senior Software Developer (UI)').should('be.visible');
+      cy.contains('NYC, NY').should('be.visible');
+      cy.contains('12/2015').should('be.visible');
+      cy.contains('06/2017').should('be.visible');
+
+      cy.contains('JP Morgan Chase').should('be.visible');
+      cy.contains('Associate Applications Developer (UI)').should('be.visible');
+      cy.contains('NYC, NY').should('be.visible');
+      cy.contains('09/2014').should('be.visible');
+      cy.contains('11/2015').should('be.visible');
+
+      cy.contains('MTV Networks (Social Media group)').should('be.visible');
+      cy.contains('Senior Web Developer').should('be.visible');
+      cy.contains('NYC, NY').should('be.visible');
+      cy.contains('10/2013').should('be.visible');
+      cy.contains('08/2014').should('be.visible');
+
+      cy.contains('MTV Networks (Digital Music group)').should('be.visible');
+      cy.contains('Web Developer').should('be.visible');
+      cy.contains('NYC, NY').should('be.visible');
+      cy.contains('05/2010').should('be.visible');
+      cy.contains('10/2013').should('be.visible');
+
+      cy.contains('Kit Digital (formerly The FeedRoom)').should('be.visible');
+      cy.contains('Web Developer').should('be.visible');
+      cy.contains('NYC, NY').should('be.visible');
+      cy.contains('10/2006').should('be.visible');
+      cy.contains('05/2010').should('be.visible');
+    });
+  });
+
+  it('expands Experience Accordion Panel One', () => {
+    cy.visit('/');
+
+    cy.contains('+ My Experience').click();
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
+    cy.contains('- My Experience');
+
+    cy.get('[data-cy="jobs-accordion"]').within(() => {
+      cy.get('[data-cy="accordion-item-1"]').within(() => {
+        cy.contains('Job Details').should('not.be.visible');
+
+        cy.contains('Bank of America, Merrill Lynch').click();
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(1000);
+        cy.contains('Job Details').should('be.visible');
+      });
+    });
+  });
+
+  it('navigates to the Experience Details page on click', () => {
+    cy.visit('/');
+
+    cy.contains('+ My Experience').click();
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
+    cy.contains('- My Experience');
+
+    cy.get('[data-cy="jobs-accordion"]').within(() => {
+      cy.get('[data-cy="accordion-item-1"]').within(() => {
+        cy.contains('Job Details').should('not.be.visible');
+
+        cy.contains('Bank of America, Merrill Lynch').click();
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(1000);
+        cy.contains('Job Details').should('be.visible').click();
+
+        cy.url().should('include', '/jobs/1');
+      });
+    });
+  });
+
   it('renders My Education button', () => {
     cy.visit('/');
 
     cy.contains('+ My Education');
   });
-  //TODO: implement education secion with expansion and navigation to a child page
 
   it('shows the My Education section on Click', () => {
     cy.visit('/');
@@ -299,3 +387,5 @@ describe('index page', () => {
     });
   });
 });
+
+export {}; //address the isolatedModules lint false positive

@@ -1,12 +1,22 @@
-import { Box, Flex, Heading, Link, Spacer } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  IconButton,
+  Link,
+  Spacer,
+  Tooltip,
+} from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { FaDownload } from 'react-icons/fa';
 import React, { ReactNode, useRef, useState } from 'react';
 import utilStyles from '../styles/utils.module.css';
 import styles from './layout.module.css';
 import ThemeSwitcher from './ThemeSwitcher';
 import Toolbar from './Toolbar';
+import { handleDownload } from '../utils';
 
 const name = 'Dmitriy Zutler';
 export const siteTitle = 'Portfolio of Dmitriy Zutler';
@@ -46,7 +56,31 @@ const Layout = ({ children, home }: LayoutProps) => {
       <Box fontSize='xl'>
         <div ref={toolbarTopRef}>
           <Toolbar>
-            <Heading size='lg'>{name}</Heading>
+            <Heading size='lg'>
+              {name}
+              <Tooltip
+                hasArrow
+                label='Download Resume (PDF)'
+                bg='gray.300'
+                color='black'
+              >
+                <IconButton
+                  aria-label='download-resume (pdf)'
+                  bg='transparent'
+                  colorScheme='teal'
+                  fontSize='md'
+                  ml={4}
+                  icon={<FaDownload />}
+                  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                  onClick={() =>
+                    handleDownload(
+                      '/files/Dmitriy_Zutler.pdf',
+                      'Dmitriy_Zutler.pdf'
+                    )
+                  }
+                />
+              </Tooltip>
+            </Heading>
             <Spacer />
             <ThemeSwitcher />
           </Toolbar>

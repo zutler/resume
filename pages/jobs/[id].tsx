@@ -38,6 +38,7 @@ export default function Job({ jobData }: JobProp) {
         </Flex>
         {jobData?.contentHtml && (
           <Text
+            as='span'
             dangerouslySetInnerHTML={{ __html: jobData.contentHtml }}
           ></Text>
         )}

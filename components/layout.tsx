@@ -73,10 +73,10 @@ const Layout = ({ children, home }: LayoutProps) => {
                   icon={<FaDownload />}
                   // eslint-disable-next-line @typescript-eslint/no-misused-promises
                   onClick={() =>
-                    handleDownload(
-                      '/files/Dmitriy_Zutler.pdf',
-                      'Dmitriy_Zutler.pdf'
-                    )
+                    handleDownload({
+                      url: '/files/Dmitriy_Zutler.pdf',
+                      fileName: 'Dmitriy_Zutler.pdf',
+                    })
                   }
                 />
               </Tooltip>

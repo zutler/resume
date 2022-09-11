@@ -386,6 +386,15 @@ describe('index page', () => {
       cy.contains('06/2000').should('not.be.visible');
     });
   });
+
+  it('renders the page not found when non-existing page is requested', () => {
+    cy.request({ url: '/abra', failOnStatusCode: false })
+      .its('status')
+      .should('equal', 404);
+    cy.visit('/abra', { failOnStatusCode: false });
+    cy.get('h1').contains('404');
+    cy.get('h2').contains('This page could not be found.');
+  });
 });
 
 export {}; //address the isolatedModules lint false positive

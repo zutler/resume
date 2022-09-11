@@ -15,7 +15,8 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@chakra-ui/css-reset": "^2.0.5",

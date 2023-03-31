@@ -76,6 +76,10 @@ describe('index page', () => {
       cy.contains('Material-UI; Bootstrap; Chakra-UI; Kendo-UI').should(
         'be.visible'
       );
+      cy.contains('Other Skills:').should('be.visible');
+      cy.contains(
+        'Agile development methodologies; Team leadership; Code reviews; Technical architecture; Automated testing'
+      ).should('be.visible');
       cy.contains('Databases:').should('be.visible');
       cy.contains('MySQL; MongoDB').should('be.visible');
     });

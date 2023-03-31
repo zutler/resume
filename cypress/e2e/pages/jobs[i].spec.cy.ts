@@ -5,7 +5,7 @@ describe('first job', () => {
     cy.get('h4').contains('VP Software Developer (UI)');
     cy.contains('07/2017');
     cy.contains('Present');
-    cy.get('ul').children().should('have.length', 9);
+    cy.get('ul').children().should('have.length', 10);
   });
 
   it('renders the second job details', () => {

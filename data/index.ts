@@ -9,6 +9,7 @@ export const jobs = [
     <ul>
       <li>Lead by example a team of UI developers</li>
       <li>Migrated the legacy AngularJS codebase to React JS (utilized Hooks and Context API) in the OpenFin container</li>
+      <li>Integrated TanStack (React) Query and Zustand to improve performance and simplify state management</li>
       <li>Implemented “No-Code” Form Builder, utilizing Formik and Yup Schema</li>
       <li>Integrated Authentication layer with OAuth2, OpenID Connect and JSON Web Tokens</li>
       <li>Implemented data driven cross-business applications using AngularJS, Twitter Bootstrap, and Kendo UI</li>
@@ -174,5 +175,14 @@ export const skills = [
   { CMS: ['GitHub', 'Bitbucket', 'SVN', 'CVS', 'TFS'] },
   { Grids: ['AG-Grid', 'UI-Grid', 'Kendo-Grid'] },
   { 'UI Frameworks': ['Material-UI', 'Bootstrap', 'Chakra-UI', 'Kendo-UI'] },
+  {
+    'Other Skills': [
+      'Agile development methodologies',
+      'Team leadership',
+      'Code reviews',
+      'Technical architecture',
+      'Automated testing',
+    ],
+  },
   { Databases: ['MySQL', 'MongoDB'] },
 ];
